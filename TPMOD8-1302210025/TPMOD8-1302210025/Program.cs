@@ -1,2 +1,23 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using TPMOD8_1302210025;
+
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        CovidConfig config = new CovidConfig();
+        Console.Write("Berapa suhu badan anda saat ini? Dalam " + config.config.satuan_suhu + ": ");
+        double suhu = double.Parse(Console.ReadLine());
+
+        Console.Write("Berapa hari yang lalu (perkiraan) anda terakhir memiliki gejala demam?: ");
+        int hariDemam = int.Parse(Console.ReadLine());
+
+        if (config.IsInputValid(suhu, hariDemam))
+        {
+            Console.WriteLine(config.config.pesan_diterima);
+        }
+        else
+        {
+            Console.WriteLine(config.config.pesan_ditolak);
+        }
+    }
+}
